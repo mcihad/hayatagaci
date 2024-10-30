@@ -1,0 +1,59 @@
+@base_url=http://localhost:8000
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNDA0NDE4LCJpYXQiOjE3MzAzMTgwMTgsImp0aSI6IjZhYThiMjQyYjhiMzQwOThiMGIyYWYzMThhZDYzMTM1IiwidXNlcl9pZCI6Miwib2lkIjoxLCJ1c2VybmFtZSI6InNlbGN1ayIsImF1ZCI6InR1cmJvaGVzYXAuY29tIiwiaXNzIjoidHVyYm9oZXNhcC5jb20ifQ.hVVqUXNyejVI70P91sRtCysOkY4wVHAlOHXNT7fb_sQ
+@token2=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMwNDEwNzAzLCJpYXQiOjE3MzAzMjQzMDMsImp0aSI6IjNjMTllZjhjMzBmYTQ4MjliYzBkYTA5ZGE1YTIwZDA4IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtZXZsYW5hIiwiYXVkIjoidHVyYm9oZXNhcC5jb20iLCJpc3MiOiJ0dXJib2hlc2FwLmNvbSJ9.kFNd76ArEdZaX0kluKTMDXQZ6OUWp00ZmxI-_3EtbmU
+POST {{base_url}}/api/token/
+Content-Type: application/json
+
+{
+    "username": "selcuk",
+    "password": "sal12345"
+}
+
+###
+POST {{base_url}}/api/token/
+Content-Type: application/json
+
+{
+    "username": "mevlana",
+    "password": "12345"
+}
+
+###
+GET {{base_url}}/api/ogrenci/
+Authorization: Bearer {{token}}
+Content-Type: application/json
+###
+GET {{base_url}}/api/ogrenci/041C3AD2877980/
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+POST {{base_url}}/api/ogrenci/041C3AD2877980/create/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "miktar": 10,
+  "aciklama": "deneme"
+}
+
+###
+POST {{base_url}}/api/kantin/rapor/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "start_date": "2024-09-30",
+  "end_date": "2024-10-31"
+}
+
+
+
+
+
+
+
+###
+GET {{base_url}}/api/ogrenci/041C3AD2877980/
+Authorization: Bearer {{token2}}
+Content-Type: application/json
