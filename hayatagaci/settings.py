@@ -5,8 +5,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = "django-insecure-hws#m6w!lklwk0l2vzw3c2fk&w%7f@42-a4&x%p0w2yv@153uy"
+import hayatagaci.debug as dbg
 
-DEBUG = True
+if hasattr(dbg, "CUSTOM_DEBUG"):
+    DEBUG = dbg.CUSTOM_DEBUG
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 # Application definition
