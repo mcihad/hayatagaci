@@ -2,3 +2,4 @@ django
 django-debug-toolbar
 django-rest-framework
 djangorestframework-simplejwt
+django-dotenv
