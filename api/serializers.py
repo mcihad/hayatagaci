@@ -11,4 +11,4 @@ class OgrenciSerializer(serializers.ModelSerializer):
 class YardimSerializer(serializers.ModelSerializer):
     class Meta:
         model = Yardim
-        fields = "__all__"
+        fields = ["kart_no", "ad_soyad", "tarih", "miktar"]

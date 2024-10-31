@@ -1,0 +1,37 @@
+<!--define table with three columns 1: Sıra No 2: Tarih 3: Miktar-->
+<table>
+    <tr>
+        <th>Sıra No</th>
+        <th>Ad Soyad</th>
+        <th>Tarih</th>
+        <th>Miktar</th>
+        <th>Açıklama</th>
+    </tr>
+    {% for row in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ row.ad_soyad }}</td>
+            <td>{{ row.tarih }}</td>
+            <td>{{ row.miktar }}</td>
+            <td>
+                {% if row.aciklama %}
+                    {{ row.aciklama }}
+                {% else %}
+                    Açıklama Yok
+                {% endif %}
+            </td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="5" class="no-record">
+                Kayıt Bulunamadı
+            </td>
+        </tr>
+    {% endfor %}
+
+    <tr>
+        <td colspan="5">
+            Toplam: {{ total }} TL
+        </td>
+    </tr>
+</table>

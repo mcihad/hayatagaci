@@ -37,8 +37,8 @@ Authorization: Bearer {{token}}
   "aciklama": "deneme"
 }
 
-###
-POST {{base_url}}/api/kantin/rapor/
+### Verilen tarih aralığındaki rapor. Sadece kantin çalışanı erişebilir.
+POST {{base_url}}/api/kantin/rapor/range/
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -47,10 +47,15 @@ Authorization: Bearer {{token}}
   "end_date": "2024-10-31"
 }
 
+###
 
+POST {{base_url}}/api/kantin/rapor/date/
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
-
-
+{
+  "date": "2024-10-31"
+}
 
 
 ###

@@ -1,0 +1,15 @@
+{% extends 'yardim/report/layout.html' %}
+
+{% block content %}
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_div }}
+
+        <input type="submit" value="Listele">
+    </form>
+    {% if is_grouping %}
+        {% include "yardim/report/grouped-data.html" %}
+    {% else %}
+        {% include "yardim/report/data.html" %}
+    {% endif %}
+{% endblock %}

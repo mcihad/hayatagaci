@@ -1,0 +1,27 @@
+<!--define table with three columns 1: Sıra No 2: Tarih 3: Miktar-->
+<table>
+    <tr>
+        <th>Sıra No</th>
+        <th>Tarih</th>
+        <th>Miktar</th>
+    </tr>
+    {% for row in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ row.tarih }}</td>
+            <td>{{ row.total }}</td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="3" class="no-record">
+                Kayıt Bulunamadı
+            </td>
+        </tr>
+    {% endfor %}
+
+    <tr>
+        <td colspan="3">
+            Toplam: {{ total }} TL
+        </td>
+    </tr>
+</table>

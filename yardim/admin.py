@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Okul, Ogrenci, Yardim
+from .views import report
 
 
 @admin.register(Okul)

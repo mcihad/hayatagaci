@@ -8,7 +8,7 @@ SECRET_KEY = "django-insecure-hws#m6w!lklwk0l2vzw3c2fk&w%7f@42-a4&x%p0w2yv@153uy
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INTERNAL_IPS = [
