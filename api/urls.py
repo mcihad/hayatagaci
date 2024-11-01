@@ -7,7 +7,12 @@ from rest_framework_simplejwt.views import (
 )
 
 from .viewsets import OgrenciRetrieveViewByKartNo
-from .views import yardim_create, report_view_by_date_range, report_view_by_date
+from .views import (
+    yardim_create,
+    report_view_by_date_range,
+    report_view_by_date,
+    report_by_group,
+)
 
 router = routers.DefaultRouter()
 # router.register(r"ogrenci", OgrenciViewSet)
@@ -20,4 +25,5 @@ urlpatterns = router.urls + [
     path("ogrenci/<str:kart_no>/create/", yardim_create),
     path("kantin/rapor/range/", report_view_by_date_range),
     path("kantin/rapor/date/", report_view_by_date),
+    path("kantin/rapor/group/", report_by_group),
 ]

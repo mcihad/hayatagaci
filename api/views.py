@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from api.serializers import YardimSerializer
+from api.serializers import YardimSerializer, GroupedYardimSerializer
 from yardim.models import Ogrenci, Yardim
 
 
@@ -127,3 +127,26 @@ def report_view_by_date(request):
     yardim_serializer = YardimSerializer(yardimlar, many=True)
 
     return Response(yardim_serializer.data)
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def report_by_group(request):
+
+    serializer = DateRangeSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+    start_date = serializer.validated_data.get("start_date")
+    end_date = serializer.validated_data.get("end_date")
+    school = request.user.okul
+    data = (
+        Yardim.objects.filter(
+            tarih__gte=start_date,
+            tarih__lte=end_date,
+            okul=school,
+        )
+        .values("tarih")
+        .annotate(total=Sum("miktar"))
+    )
+
+    total_serializer = GroupedYardimSerializer(data, many=True)
+    return Response(total_serializer.data)

@@ -30,7 +30,6 @@ def report(request):
                 .annotate(total=Sum("miktar"))
             )
 
-            print(data)
         else:
             data = (
                 Yardim.objects.filter(
