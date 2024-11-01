@@ -44,6 +44,8 @@ def yardim_create(request, kart_no):
             {"detail": "Yetersiz bakiye. Bakiye: {}".format(bakiye)}
         )
 
+    aciklama = request.data.get("aciklama") or ""
+
     try:
         Yardim.objects.create(
             ogrenci=ogrenci,
@@ -52,6 +54,7 @@ def yardim_create(request, kart_no):
             tarih=timezone.datetime.now(),
             okul=request.user.okul,
             kart_no=ogrenci.kart_no,
+            aciklama=aciklama,
         )
     except Exception as e:
         raise serializers.ValidationError({"detail": str(e)})
